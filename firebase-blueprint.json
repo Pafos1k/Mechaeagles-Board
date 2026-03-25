@@ -1,0 +1,75 @@
+{
+  "entities": {
+    "Team": {
+      "title": "Team",
+      "description": "A major team within the Mac Eagles organization.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the team (Science, Programming, Engineering)."
+        },
+        "description": {
+          "type": "string",
+          "description": "Brief description of the team's focus."
+        },
+        "color": {
+          "type": "string",
+          "description": "Hex color code for team branding."
+        }
+      },
+      "required": ["name"]
+    },
+    "Assignment": {
+      "title": "Assignment",
+      "description": "A specific task assigned to a team member.",
+      "type": "object",
+      "properties": {
+        "teamId": {
+          "type": "string",
+          "description": "The ID of the team this assignment belongs to."
+        },
+        "subTeamId": {
+          "type": "string",
+          "description": "The ID of the sub-team this assignment belongs to (e.g., Computer Science, Science)."
+        },
+        "title": {
+          "type": "string",
+          "description": "Short title of the task."
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of the task."
+        },
+        "dueDate": {
+          "type": "string",
+          "format": "date-time",
+          "description": "When the task is due."
+        },
+        "importance": {
+          "type": "number",
+          "description": "Importance level (1-5) for advancing car progress."
+        },
+        "completed": {
+          "type": "boolean",
+          "description": "Whether the task is finished."
+        },
+        "assignedTo": {
+          "type": "string",
+          "description": "Name of the team member responsible."
+        }
+      },
+      "required": ["teamId", "title", "dueDate", "importance", "completed"]
+    }
+  },
+  "firestore": {
+    "teams": {
+      "schema": "Team",
+      "description": "Collection of major teams."
+    },
+    "assignments": {
+      "schema": "Assignment",
+      "description": "Collection of all team assignments."
+    }
+  }
+}
