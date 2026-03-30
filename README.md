@@ -1,20 +1,96 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# MechaEagles Board
 
-# Run and deploy your AI Studio app
+Internal platform for managing team tasks and weekly updates.
 
-This contains everything you need to run your app locally.
+---
 
-View your app in AI Studio: https://ai.studio/apps/b543b781-68f8-4166-8772-1ebf8b7ff751
+## Overview
 
-## Run Locally
+MechaEagles Board is a lightweight web application designed to centralize task tracking and communication across multiple teams and subteams.
 
-**Prerequisites:**  Node.js
+The system uses Google Sheets as a data source, allowing non-technical team members to update content without modifying the codebase.
 
+---
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Tech Stack
+
+* React + TypeScript
+* Tailwind CSS
+* Vercel (deployment)
+* Google Sheets (data source)
+* OpenSheet API (data fetching)
+
+---
+
+## Features
+
+### Task Management
+
+* Displays tasks grouped by team and subteam
+* Tracks progress (Completed / In Progress)
+* Automatically updates without redeploy
+
+### News System
+
+* Weekly updates from leadership
+* Simple content editing via Google Sheets
+* No code changes required
+
+### Live Data
+
+* Data fetched from external API
+* Updates every 30 seconds
+
+---
+
+## Data Source
+
+The application fetches data from Google Sheets using a public API endpoint.
+
+### Tasks format
+
+| Team | Subteam | Task | Description | Deadline | Status |
+
+### News format
+
+| Name | Role | Title | Content | Date |
+
+---
+
+## Local Development
+
+```bash
+npm install
+npm run dev
+```
+
+---
+
+## Deployment
+
+The project is deployed on Vercel.
+
+Any push to the main branch triggers an automatic redeploy.
+
+---
+
+## Important
+
+* Google Sheets must be set to **public (viewer access)**
+* Do not expose API keys in the repository
+* Ensure consistent column formatting in sheets
+
+---
+
+## Roadmap
+
+* Add filtering and sorting
+* Admin controls (edit tasks from UI)
+* Authentication
+* Real-time updates
+
+---
+
+## Author
+
+MechaEagles Team
