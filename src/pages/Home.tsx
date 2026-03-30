@@ -8,14 +8,15 @@ import LightPillar from '../components/LightPillar';
 import { cn } from '../lib/utils';
 import { LogoCloud } from '../components/ui/LogoCloud';
 import { NeonParticles } from '../components/ui/NeonParticles';
+import { getAssetPath } from '../lib/assets';
 
 const logos = [
-  { name: 'NASA', src: '/NASA.png' },
-  { name: 'Solidworks', src: '/SOLIDWORK.png' },
-  { name: 'Boston College', src: '/BCEngeeniring.png' },
-  { name: 'Autodesk', src: '/FUSION.png' },
-  { name: 'SAE', src: '/SAE.png' },
-  { name: "IGO'S", src: '/IGOS.png' },
+  { name: 'NASA', src: getAssetPath('NASA.png') },
+  { name: 'Solidworks', src: getAssetPath('SOLIDWORK.png') },
+  { name: 'Boston College', src: getAssetPath('BCEngeeniring.png') },
+  { name: 'Autodesk', src: getAssetPath('FUSION.png') },
+  { name: 'SAE', src: getAssetPath('SAE.png') },
+  { name: "IGO'S", src: getAssetPath('IGOS.png') },
 ];
 
 
@@ -42,7 +43,7 @@ const Bubble = React.memo(({ className, delay = 0, duration = 8 }: { className?:
         delay
       }}
     >
-      <img src="/bublic.png" className="w-full h-full object-contain" alt="sticker" referrerPolicy="no-referrer" />
+      <img src={getAssetPath('bublic.png')} className="w-full h-full object-contain" alt="sticker" referrerPolicy="no-referrer" />
     </motion.div>
   );
 });
@@ -193,7 +194,7 @@ export default function Home() {
 
           {/* Logo - Centered on mobile, Left on desktop/tablet */}
           <div className="flex items-center shrink-0 absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
-            <img src="/logo2.png" alt="Logo" className="h-6 md:h-6 w-auto" referrerPolicy="no-referrer" />
+            <img src={getAssetPath('logo2.png')} alt="Logo" className="h-6 md:h-6 w-auto" referrerPolicy="no-referrer" />
           </div>
           
           {/* Desktop/Tablet Links - Show on md+ */}

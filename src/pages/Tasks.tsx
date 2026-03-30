@@ -16,6 +16,9 @@ import { NeonParticles } from '../components/ui/NeonParticles';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
+import { getAssetPath } from '../lib/assets';
+import { fetchWithTimeout } from '../lib/fetch';
+
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -42,16 +45,27 @@ export default function Tasks() {
   ];
 
   useEffect(() => {
-    const fetchTasks = () => {
-      fetch("https://opensheet.elk.sh/1GaVgayOS4N3p8CV4FZCpSw85JdO-xd-XnDcMpjHuASs/Sheet1")
-        .then((res) => res.json())
-        .then((data) => {
-          if (!Array.isArray(data)) {
-            console.error("Data is not an array:", data);
-            setTasks([]);
-            setLoading(false);
-            return;
-          }
+    const controller = new AbortController();
+    
+    // Safety timeout: force loading to false after 15 seconds no matter what
+    const safetyTimeout = setTimeout(() => {
+      setLoading(false);
+      console.warn("Tasks: Safety timeout triggered. Data may still be loading.");
+    }, 15000);
+
+    const fetchTasks = async () => {
+      try {
+        console.log("Tasks: Fetching all tasks...");
+        const res = await fetchWithTimeout(
+          "https://opensheet.elk.sh/1GaVgayOS4N3p8CV4FZCpSw85JdO-xd-XnDcMpjHuASs/Sheet1",
+          { signal: controller.signal }
+        );
+        const data = await res.json();
+        
+        if (!Array.isArray(data)) {
+          console.error("Tasks: Data is not an array:", data);
+          setTasks([]);
+        } else {
           const cleaned = data.map((t: any, index: number) => ({
             ...t,
             id: `task-${index}`,
@@ -60,17 +74,27 @@ export default function Tasks() {
             Status: t.Status?.trim() || "",
           }));
           setTasks(cleaned);
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.error("Error fetching tasks:", err);
-          setLoading(false);
-        });
+        }
+      } catch (err) {
+        if (err instanceof Error && err.name === 'AbortError') {
+          console.log("Tasks: Fetch aborted.");
+        } else {
+          console.error("Tasks: Error fetching tasks:", err);
+        }
+      } finally {
+        setLoading(false);
+        clearTimeout(safetyTimeout);
+      }
     };
 
     fetchTasks();
     const interval = setInterval(fetchTasks, 30000); // Poll every 30 seconds
-    return () => clearInterval(interval);
+    
+    return () => {
+      controller.abort();
+      clearInterval(interval);
+      clearTimeout(safetyTimeout);
+    };
   }, []);
 
   const handleMarkCompleted = (id: string) => {
@@ -106,7 +130,7 @@ export default function Tasks() {
         <div className="bg-[#0a0a0a]/90 border border-white/10 rounded-full px-4 md:px-8 py-2 flex items-center justify-between md:justify-center gap-4 md:gap-8 shadow-2xl relative min-h-[52px]">
           <div className="w-10 md:hidden" />
           <Link to="/" className="flex items-center shrink-0 absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
-            <img src="/logo2.png" alt="Logo" className="h-6 w-auto" referrerPolicy="no-referrer" />
+            <img src={getAssetPath('logo2.png')} alt="Logo" className="h-6 w-auto" referrerPolicy="no-referrer" />
           </Link>
           <div className="hidden md:flex items-center gap-8 text-[14px] font-slab tracking-widest text-white/70 uppercase">
             {navLinks.map((link) => (

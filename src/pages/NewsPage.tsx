@@ -15,6 +15,9 @@ import { NeonParticles } from '../components/ui/NeonParticles';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
+import { getAssetPath } from '../lib/assets';
+import { fetchWithTimeout } from '../lib/fetch';
+
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -28,41 +31,41 @@ type News = {
 };
 
 const AUTHOR_INFO: Record<string, { fullName: string; photo: string; role: string }> = {
-  'Vedarsh': { fullName: 'Vedarsh Misha', photo: '/VedarshMishra.jpg', role: 'Project Manager' },
-  'Vedarsh Misha': { fullName: 'Vedarsh Misha', photo: '/VedarshMishra.jpg', role: 'Project Manager' },
-  'Austin': { fullName: 'Austin Kinnealey', photo: '/Austin Kinnealey.jpg', role: 'Project Manager' },
-  'Austin Kinnealey': { fullName: 'Austin Kinnealey', photo: '/Austin Kinnealey.jpg', role: 'Project Manager' },
-  'Lucas': { fullName: 'Lucas DiMarco', photo: '/Lucas DiMarco.jpg', role: 'Science Lead' },
-  'Lucas DiMarco': { fullName: 'Lucas DiMarco', photo: '/Lucas DiMarco.jpg', role: 'Science Lead' },
-  'Ambrose': { fullName: 'Ambrose McCullough', photo: '/Ambrose McCullough.jpg', role: 'Programmatics Lead' },
-  'Ambrose McCullough': { fullName: 'Ambrose McCullough', photo: '/Ambrose McCullough.jpg', role: 'Programmatics Lead' },
-  'Sam': { fullName: 'Sam Kaiser', photo: '/Samuel Kaiser.jpg', role: 'Engineering Lead' },
-  'Sam Kaiser': { fullName: 'Sam Kaiser', photo: '/Samuel Kaiser.jpg', role: 'Engineering Lead' },
-  'Vladislav': { fullName: 'Vladislav Hoila', photo: '/Vlad1.jpg', role: 'Head of Software Development' },
-  'Vladislav Hoila': { fullName: 'Vladislav Hoila', photo: '/Vlad1.jpg', role: 'Head of Software Development' },
-  'Christian': { fullName: 'Christian Roth', photo: '/Christian Roth.jpg', role: 'Head of Specialization Compliance' },
-  'Christian Roth': { fullName: 'Christian Roth', photo: '/Christian Roth.jpg', role: 'Head of Specialization Compliance' },
-  'Jack': { fullName: 'Jack Dauphinais', photo: '/Jack Dauphinais.jpg', role: 'Head of Research' },
-  'Jack Dauphinais': { fullName: 'Jack Dauphinais', photo: '/Jack Dauphinais.jpg', role: 'Head of Research' },
-  'Atharva': { fullName: 'Atharva Naik', photo: '/Atharva Naik.jpg', role: 'Head of HCD' },
-  'Atharva Naik': { fullName: 'Atharva Naik', photo: '/Atharva Naik.jpg', role: 'Head of HCD' },
-  'Maxwell': { fullName: 'Maxwell Crawford', photo: '/Maxwell Crawford.jpg', role: 'Head of Outreach' },
-  'Maxwell Crawford': { fullName: 'Maxwell Crawford', photo: '/Maxwell Crawford.jpg', role: 'Head of Outreach' },
-  'Carlos': { fullName: 'Carlos Contreras', photo: '/Juan (Carlos) Contreras.jpg', role: 'Head of Scheduling' },
-  'Carlos Contreras': { fullName: 'Carlos Contreras', photo: '/Juan (Carlos) Contreras.jpg', role: 'Head of Scheduling' },
-  'Michael': { fullName: 'Michael Maurice', photo: '/MichaelMaurice.jpg', role: 'Head of Marketing' },
-  'Michael Maurice': { fullName: 'Michael Maurice', photo: '/MichaelMaurice.jpg', role: 'Head of Marketing' },
-  'Matt': { fullName: 'Matt Mahan', photo: '/Matt Mahan.jpg', role: 'Head of Finance' },
-  'Matt Mahan': { fullName: 'Matt Mahan', photo: '/Matt Mahan.jpg', role: 'Head of Finance' },
-  'Troy': { fullName: 'Troy Sterling', photo: '/Troy Sterling.jpg', role: 'Head of Suspension' },
-  'Troy Sterling': { fullName: 'Troy Sterling', photo: '/Troy Sterling.jpg', role: 'Head of Suspension' },
-  'Tobin': { fullName: 'Tobin Ting', photo: '/Tobin Ting.jpg', role: 'Head of Steering' },
-  'Tobin Ting': { fullName: 'Tobin Ting', photo: '/Tobin Ting.jpg', role: 'Head of Steering' },
-  'Paul': { fullName: 'Paul Gin', photo: '/Paulino Gin.jpg', role: 'Head of Roll Cage' },
-  'Paul Gin': { fullName: 'Paul Gin', photo: '/Paulino Gin.jpg', role: 'Head of Roll Cage' },
-  'Asad': { fullName: 'Asad Faqirzada', photo: '/Asad Faquirzada.jpg', role: 'Head of Drive Train' },
-  'Asad Faqirzada': { fullName: 'Asad Faqirzada', photo: '/Asad Faquirzada.jpg', role: 'Head of Drive Train' },
-  'Jack DelGrande': { fullName: 'Jack DelGrande', photo: '/Jack DelGrande.jpg', role: 'Head of Fabrication' },
+  'Vedarsh': { fullName: 'Vedarsh Mishra', photo: getAssetPath('VedarshMishra.jpg'), role: 'Project Manager' },
+  'Vedarsh Misha': { fullName: 'Vedarsh Misha', photo: getAssetPath('VedarshMishra.jpg'), role: 'Project Manager' },
+  'Austin': { fullName: 'Austin Kinnealey', photo: getAssetPath('Austin%20Kinnealey.jpg'), role: 'Project Manager' },
+  'Austin Kinnealey': { fullName: 'Austin Kinnealey', photo: getAssetPath('Austin%20Kinnealey.jpg'), role: 'Project Manager' },
+  'Lucas': { fullName: 'Lucas DiMarco', photo: getAssetPath('Lucas%20DiMarco.jpg'), role: 'Science Lead' },
+  'Lucas DiMarco': { fullName: 'Lucas DiMarco', photo: getAssetPath('Lucas%20DiMarco.jpg'), role: 'Science Lead' },
+  'Ambrose': { fullName: 'Ambrose McCullough', photo: getAssetPath('Ambrose%20McCullough.jpg'), role: 'Programmatics Lead' },
+  'Ambrose McCullough': { fullName: 'Ambrose McCullough', photo: getAssetPath('Ambrose%20McCullough.jpg'), role: 'Programmatics Lead' },
+  'Sam': { fullName: 'Sam Kaiser', photo: getAssetPath('Samuel%20Kaiser.jpg'), role: 'Engineering Lead' },
+  'Sam Kaiser': { fullName: 'Sam Kaiser', photo: getAssetPath('Samuel%20Kaiser.jpg'), role: 'Engineering Lead' },
+  'Vladislav': { fullName: 'Vladislav Hoila', photo: getAssetPath('Vlad1.jpg'), role: 'Head of Software Development' },
+  'Vladislav Hoila': { fullName: 'Vladislav Hoila', photo: getAssetPath('Vlad1.jpg'), role: 'Head of Software Development' },
+  'Christian': { fullName: 'Christian Roth', photo: getAssetPath('Christian%20Roth.jpg'), role: 'Head of Specialization Compliance' },
+  'Christian Roth': { fullName: 'Christian Roth', photo: getAssetPath('Christian%20Roth.jpg'), role: 'Head of Specialization Compliance' },
+  'Jack': { fullName: 'Jack Dauphinais', photo: getAssetPath('Jack%20Dauphinais.jpg'), role: 'Head of Research' },
+  'Jack Dauphinais': { fullName: 'Jack Dauphinais', photo: getAssetPath('Jack%20Dauphinais.jpg'), role: 'Head of Research' },
+  'Atharva': { fullName: 'Atharva Naik', photo: getAssetPath('Atharva%20Naik.jpg'), role: 'Head of HCD' },
+  'Atharva Naik': { fullName: 'Atharva Naik', photo: getAssetPath('Atharva%20Naik.jpg'), role: 'Head of HCD' },
+  'Maxwell': { fullName: 'Maxwell Crawford', photo: getAssetPath('Maxwell%20Crawford.jpg'), role: 'Head of Outreach' },
+  'Maxwell Crawford': { fullName: 'Maxwell Crawford', photo: getAssetPath('Maxwell%20Crawford.jpg'), role: 'Head of Outreach' },
+  'Carlos': { fullName: 'Carlos Contreras', photo: getAssetPath('Juan%20%28Carlos%29%20Contreras.jpg'), role: 'Head of Scheduling' },
+  'Carlos Contreras': { fullName: 'Carlos Contreras', photo: getAssetPath('Juan%20%28Carlos%29%20Contreras.jpg'), role: 'Head of Scheduling' },
+  'Michael': { fullName: 'Michael Maurice', photo: getAssetPath('MichaelMaurice.jpg'), role: 'Head of Marketing' },
+  'Michael Maurice': { fullName: 'Michael Maurice', photo: getAssetPath('MichaelMaurice.jpg'), role: 'Head of Marketing' },
+  'Matt': { fullName: 'Matt Mahan', photo: getAssetPath('Matt%20Mahan.jpg'), role: 'Head of Finance' },
+  'Matt Mahan': { fullName: 'Matt Mahan', photo: getAssetPath('Matt%20Mahan.jpg'), role: 'Head of Finance' },
+  'Troy': { fullName: 'Troy Sterling', photo: getAssetPath('Troy%20Sterling.jpg'), role: 'Head of Suspension' },
+  'Troy Sterling': { fullName: 'Troy Sterling', photo: getAssetPath('Troy%20Sterling.jpg'), role: 'Head of Suspension' },
+  'Tobin': { fullName: 'Tobin Ting', photo: getAssetPath('Tobin%20Ting.jpg'), role: 'Head of Steering' },
+  'Tobin Ting': { fullName: 'Tobin Ting', photo: getAssetPath('Tobin%20Ting.jpg'), role: 'Head of Steering' },
+  'Paul': { fullName: 'Paul Gin', photo: getAssetPath('Paulino%20Gin.jpg'), role: 'Head of Roll Cage' },
+  'Paul Gin': { fullName: 'Paul Gin', photo: getAssetPath('Paulino%20Gin.jpg'), role: 'Head of Roll Cage' },
+  'Asad': { fullName: 'Asad Faqirzada', photo: getAssetPath('Asad%20Faquirzada.jpg'), role: 'Head of Drive Train' },
+  'Asad Faqirzada': { fullName: 'Asad Faqirzada', photo: getAssetPath('Asad%20Faquirzada.jpg'), role: 'Head of Drive Train' },
+  'Jack DelGrande': { fullName: 'Jack DelGrande', photo: getAssetPath('Jack%20DelGrande.jpg'), role: 'Head of Fabrication' },
 };
 
 export default function NewsPage() {
@@ -78,16 +81,27 @@ export default function NewsPage() {
   ];
 
   useEffect(() => {
-    const fetchNews = () => {
-      fetch("https://opensheet.elk.sh/1ZLi6_eGX5UqJOaDzJDGNgw1Q7vzQsyvBYAYpqFlzlSA/Sheet1")
-        .then((res) => res.json())
-        .then((data) => {
-          if (!Array.isArray(data)) {
-            console.error("Data is not an array:", data);
-            setNews([]);
-            setLoading(false);
-            return;
-          }
+    const controller = new AbortController();
+    
+    // Safety timeout: force loading to false after 15 seconds no matter what
+    const safetyTimeout = setTimeout(() => {
+      setLoading(false);
+      console.warn("NewsPage: Safety timeout triggered. Data may still be loading.");
+    }, 15000);
+
+    const fetchNews = async () => {
+      try {
+        console.log("NewsPage: Fetching news...");
+        const res = await fetchWithTimeout(
+          "https://opensheet.elk.sh/1ZLi6_eGX5UqJOaDzJDGNgw1Q7vzQsyvBYAYpqFlzlSA/Sheet1",
+          { signal: controller.signal }
+        );
+        const data = await res.json();
+        
+        if (!Array.isArray(data)) {
+          console.error("NewsPage: Data is not an array:", data);
+          setNews([]);
+        } else {
           const cleaned = data.map((n: any) => ({
             Name: n.Name?.trim() || "",
             Role: n.Role?.trim() || "",
@@ -95,19 +109,28 @@ export default function NewsPage() {
             Content: n.Content?.trim() || "",
             Date: n.Date || "",
           }));
-
           setNews(cleaned);
-          setLoading(false);
-        })
-        .catch((err) => {
-          console.error("Error fetching news:", err);
-          setLoading(false);
-        });
+        }
+      } catch (err) {
+        if (err instanceof Error && err.name === 'AbortError') {
+          console.log("NewsPage: Fetch aborted.");
+        } else {
+          console.error("NewsPage: Error fetching news:", err);
+        }
+      } finally {
+        setLoading(false);
+        clearTimeout(safetyTimeout);
+      }
     };
 
     fetchNews();
     const interval = setInterval(fetchNews, 60000); // Poll every minute
-    return () => clearInterval(interval);
+    
+    return () => {
+      controller.abort();
+      clearInterval(interval);
+      clearTimeout(safetyTimeout);
+    };
   }, []);
 
   return (
@@ -139,7 +162,7 @@ export default function NewsPage() {
         <div className="bg-[#0a0a0a]/90 border border-white/10 rounded-full px-4 md:px-8 py-2 flex items-center justify-between md:justify-center gap-4 md:gap-8 shadow-2xl relative min-h-[52px]">
           <div className="w-10 md:hidden" />
           <Link to="/" className="flex items-center shrink-0 absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
-            <img src="/logo2.png" alt="Logo" className="h-6 w-auto" referrerPolicy="no-referrer" />
+            <img src={getAssetPath('logo2.png')} alt="Logo" className="h-6 w-auto" referrerPolicy="no-referrer" />
           </Link>
           <div className="hidden md:flex items-center gap-8 text-[14px] font-slab tracking-widest text-white/70 uppercase">
             {navLinks.map((link) => (

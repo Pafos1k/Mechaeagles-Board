@@ -14,16 +14,18 @@ import { twMerge } from 'tailwind-merge';
 import LightPillar from '../components/LightPillar';
 import { NeonParticles } from '../components/ui/NeonParticles';
 
+import { getAssetPath } from '../lib/assets';
+
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
 const leaders = [
   {
-    id: 'vedarsh-misha',
-    name: 'Vedarsh Misha',
+    id: 'vedarsh-mishra',
+    name: 'Vedarsh Mishra',
     role: 'Project Manager',
-    image: '/VedarshMishra.jpg',
+    image: getAssetPath('VedarshMishra.jpg'),
     email: 'mailto:mishrave@bc.edu',
     discord: 'pathseekingscholar',
     discordId: '575852049699307521' // Add numeric Discord ID here for direct messaging
@@ -32,7 +34,7 @@ const leaders = [
     id: 'austin-kinnealey',
     name: 'Austin Kinnealey',
     role: 'Project Manager',
-    image: '/Austin Kinnealey.jpg',
+    image: getAssetPath('Austin%20Kinnealey.jpg'),
     email: 'mailto:kinneaau@bc.edu',
     discord: 'austin_67679',
     discordId: '1326938065700261919'
@@ -41,7 +43,7 @@ const leaders = [
     id: 'lucas-dimarco',
     name: 'Lucas DiMarco',
     role: 'Science Lead',
-    image: '/Lucas DiMarco.jpg',
+    image: getAssetPath('Lucas%20DiMarco.jpg'),
     email: 'mailto:dimarc@bc.edu',
     discord: 'lucasanthonydimarco_64401',
     discordId: '1374159432723861626'
@@ -50,7 +52,7 @@ const leaders = [
     id: 'ambrose-mccullough',
     name: 'Ambrose McCullough',
     role: 'Programmatics Lead',
-    image: '/Ambrose McCullough.jpg',
+    image: getAssetPath('Ambrose%20McCullough.jpg'),
     email: 'mailto:mccull@bc.edu',
     discord: 'ambrosemccullough',
     discordId: '1330744010226008084'
@@ -59,7 +61,7 @@ const leaders = [
     id: 'sam-kaiser',
     name: 'Sam Kaiser',
     role: 'Engineering Lead',
-    image: '/Samuel Kaiser.jpg',
+    image: getAssetPath('Samuel%20Kaiser.jpg'),
     email: 'mailto:kazmies@bc.edu',
     discord: 'samrkaiser13',
     discordId: '1466249640658731029'
@@ -68,7 +70,7 @@ const leaders = [
     id: 'vladislav-hoila',
     name: 'Vladislav Hoila',
     role: 'Head of Software Development',
-    image: '/Vlad1.jpg',
+    image: getAssetPath('Vlad1.jpg'),
     email: 'mailto:hoila@bc.edu',
     discord: 'vladhoila',
     discordId: '1466249192489091332'
@@ -77,7 +79,7 @@ const leaders = [
     id: 'christian-roth',
     name: 'Christian Roth',
     role: 'Head of Specialization Compliance',
-    image: '/Christian Roth.jpg',
+    image: getAssetPath('Christian%20Roth.jpg'),
     email: 'mailto:rothchr@bc.edu',
     discord: 'lazypanda12',
     discordId: '672921989756878898'
@@ -86,7 +88,7 @@ const leaders = [
     id: 'jack-dauphinais',
     name: 'Jack Dauphinais',
     role: 'Head of Research',
-    image: '/Jack Dauphinais.jpg',
+    image: getAssetPath('Jack%20Dauphinais.jpg'),
     email: 'mailto:dauphinj@bc.edu',
     discord: 'jackdauphinais0822',
     discordId: '1468773061892243540'
@@ -95,7 +97,7 @@ const leaders = [
     id: 'atharva-naik',
     name: 'Atharva Naik',
     role: 'Head of HCD',
-    image: '/Atharva Naik.jpg',
+    image: getAssetPath('Atharva%20Naik.jpg'),
     email: 'mailto:naikat@bc.edu',
     discord: '-',
     discordId: ''
@@ -104,7 +106,7 @@ const leaders = [
     id: 'maxwell-crawford',
     name: 'Maxwell Crawford',
     role: 'Head of Outreach',
-    image: '/Maxwell Crawford.jpg',
+    image: getAssetPath('Maxwell%20Crawford.jpg'),
     email: 'mailto:crawfm@bc.edu',
     discord: 'peanut_hedder',
     discordId: '1139290530094780456'
@@ -113,7 +115,7 @@ const leaders = [
     id: 'carlos-contreras',
     name: 'Carlos Contreras',
     role: 'Head of Scheduling',
-    image: '/Juan (Carlos) Contreras.jpg',
+    image: getAssetPath('Juan%20%28Carlos%29%20Contreras.jpg'),
     email: 'mailto:contrejk@bc.edu',
     discord: 'vexus0468',
     discordId: '463036437949055006'
@@ -122,7 +124,7 @@ const leaders = [
     id: 'michael-maurice',
     name: 'Michael Maurice',
     role: 'Head of Marketing',
-    image: '/MichaelMaurice.jpg',
+    image: getAssetPath('MichaelMaurice.jpg'),
     email: 'mailto:mauricm@bc.edu',
     discord: 'usa.baby',
     discordId: '614989008094625816'
@@ -131,7 +133,7 @@ const leaders = [
     id: 'matt-mahan',
     name: 'Matt Mahan',
     role: 'Head of Finance',
-    image: '/Matt Mahan.jpg',
+    image: getAssetPath('Matt%20Mahan.jpg'),
     email: 'mailto:mahanmat@bc.edu',
     discord: 'mattm3118902',
     discordId: '830894296739348522'
@@ -140,7 +142,7 @@ const leaders = [
     id: 'troy-sterling',
     name: 'Troy Sterling',
     role: 'Head of Suspension',
-    image: '/Troy Sterling.jpg',
+    image: getAssetPath('Troy%20Sterling.jpg'),
     email: 'mailto:sterlit@bc.edu',
     discord: '-',
     discordId: ''
@@ -149,7 +151,7 @@ const leaders = [
     id: 'tobin-ting',
     name: 'Tobin Ting',
     role: 'Head of Steering',
-    image: '/Tobin Ting.jpg',
+    image: getAssetPath('Tobin%20Ting.jpg'),
     email: 'mailto:tingto@bc.edu',
     discord: 'splishysplashyspaghetti',
     discordId: '285077490001641483'
@@ -158,7 +160,7 @@ const leaders = [
     id: 'paul-gin',
     name: 'Paul Gin',
     role: 'Head of Roll Cage',
-    image: '/Paulino Gin.jpg',
+    image: getAssetPath('Paulino%20Gin.jpg'),
     email: 'mailto:ginp@bc.edu',
     discord: '-',
     discordId: ''
@@ -167,7 +169,7 @@ const leaders = [
     id: 'asad-faqirzada',
     name: 'Asad Faqirzada',
     role: 'Head of Drive Train',
-    image: '/Asad Faquirzada.jpg',
+    image: getAssetPath('Asad%20Faquirzada.jpg'),
     email: 'mailto:faqirzad@bc.edu',
     discord: 'asad_faqirzada',
     discordId: '849748343412097024'
@@ -176,7 +178,7 @@ const leaders = [
     id: 'jack-delgrande',
     name: 'Jack DelGrande',
     role: 'Head of Fabrication',
-    image: '/Jack DelGrande.jpg',
+    image: getAssetPath('Jack%20DelGrande.jpg'),
     email: 'mailto:delgran@bc.edu',
     discord: '-',
     discordId: ''
@@ -190,7 +192,7 @@ export default function Contacts() {
   const navLinks = [
     { name: 'Home', href: '/#home' },
     { name: 'Teams', href: '/#teams' },
-    { name: 'News', href: '/#news' },
+    { name: 'News', href: '/news' },
     { name: 'Contacts', href: '/contacts' },
   ];
 
@@ -242,7 +244,7 @@ export default function Contacts() {
         <div className="bg-[#0a0a0a]/90 border border-white/10 rounded-full px-4 md:px-8 py-2 flex items-center justify-between md:justify-center gap-4 md:gap-8 shadow-2xl relative min-h-[52px]">
           <div className="w-10 md:hidden" />
           <Link to="/" className="flex items-center shrink-0 absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
-            <img src="/logo2.png" alt="Logo" className="h-6 w-auto" referrerPolicy="no-referrer" />
+            <img src={getAssetPath('logo2.png')} alt="Logo" className="h-6 w-auto" referrerPolicy="no-referrer" />
           </Link>
           <div className="hidden md:flex items-center gap-8 text-[14px] font-slab tracking-widest text-white/70 uppercase">
             {navLinks.map((link) => (

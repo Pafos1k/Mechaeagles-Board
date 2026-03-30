@@ -1,10 +1,10 @@
 {
   "projectId": "ai-studio-applet-webapp-4c416",
   "appId": "1:736469739487:web:1741bfaaedf6ea2600c66a",
-  "apiKey": "AIzaSyAeAgILbEK07yDGjhs--4gLc4eqxlX0nCI",
-  "authDomain": "ai-studio-applet-webapp-4c416.firebaseapp.com",
+  "apiKey": "",
+  "authDomain": "",
   "firestoreDatabaseId": "ai-studio-b543b781-68f8-4166-8772-1ebf8b7ff751",
-  "storageBucket": "ai-studio-applet-webapp-4c416.firebasestorage.app",
-  "messagingSenderId": "736469739487",
+  "storageBucket": "",
+  "messagingSenderId": "",
   "measurementId": ""
 }
