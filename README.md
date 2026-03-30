@@ -93,4 +93,4 @@ Any push to the main branch triggers an automatic redeploy.
 
 ## Author
 
-MechaEagles Team
+Vladislav Hoila
