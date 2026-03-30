@@ -43,7 +43,7 @@ const Bubble = React.memo(({ className, delay = 0, duration = 8 }: { className?:
         delay
       }}
     >
-      <img src={getAssetPath('bublic.png')} className="w-full h-full object-contain" alt="sticker" referrerPolicy="no-referrer" />
+      <img src={getAssetPath('bublic.png')} className="w-full h-full object-contain" alt="sticker" />
     </motion.div>
   );
 });
@@ -194,7 +194,7 @@ export default function Home() {
 
           {/* Logo - Centered on mobile, Left on desktop/tablet */}
           <div className="flex items-center shrink-0 absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
-            <img src={getAssetPath('logo2.png')} alt="Logo" className="h-6 md:h-6 w-auto" referrerPolicy="no-referrer" />
+            <img src={getAssetPath('logo2.png')} alt="Logo" className="h-6 md:h-6 w-auto" />
           </div>
           
           {/* Desktop/Tablet Links - Show on md+ */}

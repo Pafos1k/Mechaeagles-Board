@@ -16,6 +16,10 @@ service cloud.firestore {
       allow read, write: if true;
     }
 
+    match /test/connection {
+      allow read: if true;
+    }
+
     // Default deny for everything else
     match /{path=**} {
       allow read, write: if false;

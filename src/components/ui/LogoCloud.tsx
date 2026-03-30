@@ -30,7 +30,6 @@ export const LogoCloud: React.FC<LogoCloudProps> = React.memo(({ logos }) => {
                 className={`w-auto object-contain opacity-35 hover:opacity-100 transition-all duration-700 will-change-transform transform-gpu grayscale hover:grayscale-0 ${
                   logo.alt === "IGO'S" ? "h-6 md:h-8" : "h-8 md:h-12"
                 }`}
-                referrerPolicy="no-referrer"
               />
             </div>
           ))}

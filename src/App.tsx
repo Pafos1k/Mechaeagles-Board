@@ -12,7 +12,7 @@ import Tasks from './pages/Tasks';
 import NewsPage from './pages/NewsPage';
 import ScrollToTop from './components/ScrollToTop';
 import { useEffect } from 'react';
-import { db } from './firebase';
+import { db, handleFirestoreError, OperationType } from './firebase';
 import { doc, getDocFromServer } from 'firebase/firestore';
 
 // Set scroll restoration to manual to prevent browser from jumping around
@@ -24,11 +24,15 @@ export default function App() {
   // Test connection to Firestore as required by guidelines
   useEffect(() => {
     async function testConnection() {
+      const path = 'test/connection';
       try {
-        await getDocFromServer(doc(db, 'test', 'connection'));
+        await getDocFromServer(doc(db, path));
       } catch (error) {
         if (error instanceof Error && error.message.includes('the client is offline')) {
           console.error("Please check your Firebase configuration.");
+        } else {
+          // For other errors (like permission denied), use the standard handler
+          handleFirestoreError(error, OperationType.GET, path);
         }
       }
     }
