@@ -25,7 +25,7 @@ const leaders = [
     id: 'vedarsh-mishra',
     name: 'Vedarsh Mishra',
     role: 'Project Manager',
-    image: getAssetPath('VedarshMishra.jpg'),
+    image: getAssetPath('/VedarshMishra.jpg'),
     email: 'mailto:mishrave@bc.edu',
     discord: 'pathseekingscholar',
     discordId: '575852049699307521' // Add numeric Discord ID here for direct messaging
