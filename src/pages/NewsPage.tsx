@@ -33,39 +33,39 @@ type News = {
 const AUTHOR_INFO: Record<string, { fullName: string; photo: string; role: string }> = {
   'Vedarsh': { fullName: 'Vedarsh Mishra', photo: getAssetPath('VedarshMishra.jpg'), role: 'Project Manager' },
   'Vedarsh Misha': { fullName: 'Vedarsh Misha', photo: getAssetPath('VedarshMishra.jpg'), role: 'Project Manager' },
-  'Austin': { fullName: 'Austin Kinnealey', photo: getAssetPath('Austin%20Kinnealey.jpg'), role: 'Project Manager' },
-  'Austin Kinnealey': { fullName: 'Austin Kinnealey', photo: getAssetPath('Austin%20Kinnealey.jpg'), role: 'Project Manager' },
-  'Lucas': { fullName: 'Lucas DiMarco', photo: getAssetPath('Lucas%20DiMarco.jpg'), role: 'Science Lead' },
-  'Lucas DiMarco': { fullName: 'Lucas DiMarco', photo: getAssetPath('Lucas%20DiMarco.jpg'), role: 'Science Lead' },
-  'Ambrose': { fullName: 'Ambrose McCullough', photo: getAssetPath('Ambrose%20McCullough.jpg'), role: 'Programmatics Lead' },
-  'Ambrose McCullough': { fullName: 'Ambrose McCullough', photo: getAssetPath('Ambrose%20McCullough.jpg'), role: 'Programmatics Lead' },
-  'Sam': { fullName: 'Sam Kaiser', photo: getAssetPath('Samuel%20Kaiser.jpg'), role: 'Engineering Lead' },
-  'Sam Kaiser': { fullName: 'Sam Kaiser', photo: getAssetPath('Samuel%20Kaiser.jpg'), role: 'Engineering Lead' },
+  'Austin': { fullName: 'Austin Kinnealey', photo: getAssetPath('Austin Kinnealey.jpg'), role: 'Project Manager' },
+  'Austin Kinnealey': { fullName: 'Austin Kinnealey', photo: getAssetPath('Austin Kinnealey.jpg'), role: 'Project Manager' },
+  'Lucas': { fullName: 'Lucas DiMarco', photo: getAssetPath('Lucas DiMarco.jpg'), role: 'Science Lead' },
+  'Lucas DiMarco': { fullName: 'Lucas DiMarco', photo: getAssetPath('Lucas DiMarco.jpg'), role: 'Science Lead' },
+  'Ambrose': { fullName: 'Ambrose McCullough', photo: getAssetPath('Ambrose McCullough.jpg'), role: 'Programmatics Lead' },
+  'Ambrose McCullough': { fullName: 'Ambrose McCullough', photo: getAssetPath('Ambrose McCullough.jpg'), role: 'Programmatics Lead' },
+  'Sam': { fullName: 'Sam Kaiser', photo: getAssetPath('Samuel Kaiser.jpg'), role: 'Engineering Lead' },
+  'Sam Kaiser': { fullName: 'Sam Kaiser', photo: getAssetPath('Samuel Kaiser.jpg'), role: 'Engineering Lead' },
   'Vladislav': { fullName: 'Vladislav Hoila', photo: getAssetPath('Vlad1.jpg'), role: 'Head of Software Development' },
   'Vladislav Hoila': { fullName: 'Vladislav Hoila', photo: getAssetPath('Vlad1.jpg'), role: 'Head of Software Development' },
-  'Christian': { fullName: 'Christian Roth', photo: getAssetPath('Christian%20Roth.jpg'), role: 'Head of Specialization Compliance' },
-  'Christian Roth': { fullName: 'Christian Roth', photo: getAssetPath('Christian%20Roth.jpg'), role: 'Head of Specialization Compliance' },
-  'Jack': { fullName: 'Jack Dauphinais', photo: getAssetPath('Jack%20Dauphinais.jpg'), role: 'Head of Research' },
-  'Jack Dauphinais': { fullName: 'Jack Dauphinais', photo: getAssetPath('Jack%20Dauphinais.jpg'), role: 'Head of Research' },
-  'Atharva': { fullName: 'Atharva Naik', photo: getAssetPath('Atharva%20Naik.jpg'), role: 'Head of HCD' },
-  'Atharva Naik': { fullName: 'Atharva Naik', photo: getAssetPath('Atharva%20Naik.jpg'), role: 'Head of HCD' },
-  'Maxwell': { fullName: 'Maxwell Crawford', photo: getAssetPath('Maxwell%20Crawford.jpg'), role: 'Head of Outreach' },
-  'Maxwell Crawford': { fullName: 'Maxwell Crawford', photo: getAssetPath('Maxwell%20Crawford.jpg'), role: 'Head of Outreach' },
-  'Carlos': { fullName: 'Carlos Contreras', photo: getAssetPath('Juan%20%28Carlos%29%20Contreras.jpg'), role: 'Head of Scheduling' },
-  'Carlos Contreras': { fullName: 'Carlos Contreras', photo: getAssetPath('Juan%20%28Carlos%29%20Contreras.jpg'), role: 'Head of Scheduling' },
+  'Christian': { fullName: 'Christian Roth', photo: getAssetPath('Christian Roth.jpg'), role: 'Head of Specialization Compliance' },
+  'Christian Roth': { fullName: 'Christian Roth', photo: getAssetPath('Christian Roth.jpg'), role: 'Head of Specialization Compliance' },
+  'Jack': { fullName: 'Jack Dauphinais', photo: getAssetPath('Jack Dauphinais.jpg'), role: 'Head of Research' },
+  'Jack Dauphinais': { fullName: 'Jack Dauphinais', photo: getAssetPath('Jack Dauphinais.jpg'), role: 'Head of Research' },
+  'Atharva': { fullName: 'Atharva Naik', photo: getAssetPath('Atharva Naik.jpg'), role: 'Head of HCD' },
+  'Atharva Naik': { fullName: 'Atharva Naik', photo: getAssetPath('Atharva Naik.jpg'), role: 'Head of HCD' },
+  'Maxwell': { fullName: 'Maxwell Crawford', photo: getAssetPath('Maxwell Crawford.jpg'), role: 'Head of Outreach' },
+  'Maxwell Crawford': { fullName: 'Maxwell Crawford', photo: getAssetPath('Maxwell Crawford.jpg'), role: 'Head of Outreach' },
+  'Carlos': { fullName: 'Carlos Contreras', photo: getAssetPath('Juan (Carlos) Contreras.jpg'), role: 'Head of Scheduling' },
+  'Carlos Contreras': { fullName: 'Carlos Contreras', photo: getAssetPath('Juan (Carlos) Contreras.jpg'), role: 'Head of Scheduling' },
   'Michael': { fullName: 'Michael Maurice', photo: getAssetPath('MichaelMaurice.jpg'), role: 'Head of Marketing' },
   'Michael Maurice': { fullName: 'Michael Maurice', photo: getAssetPath('MichaelMaurice.jpg'), role: 'Head of Marketing' },
-  'Matt': { fullName: 'Matt Mahan', photo: getAssetPath('Matt%20Mahan.jpg'), role: 'Head of Finance' },
-  'Matt Mahan': { fullName: 'Matt Mahan', photo: getAssetPath('Matt%20Mahan.jpg'), role: 'Head of Finance' },
-  'Troy': { fullName: 'Troy Sterling', photo: getAssetPath('Troy%20Sterling.jpg'), role: 'Head of Suspension' },
-  'Troy Sterling': { fullName: 'Troy Sterling', photo: getAssetPath('Troy%20Sterling.jpg'), role: 'Head of Suspension' },
-  'Tobin': { fullName: 'Tobin Ting', photo: getAssetPath('Tobin%20Ting.jpg'), role: 'Head of Steering' },
-  'Tobin Ting': { fullName: 'Tobin Ting', photo: getAssetPath('Tobin%20Ting.jpg'), role: 'Head of Steering' },
-  'Paul': { fullName: 'Paul Gin', photo: getAssetPath('Paulino%20Gin.jpg'), role: 'Head of Roll Cage' },
-  'Paul Gin': { fullName: 'Paul Gin', photo: getAssetPath('Paulino%20Gin.jpg'), role: 'Head of Roll Cage' },
-  'Asad': { fullName: 'Asad Faqirzada', photo: getAssetPath('Asad%20Faquirzada.jpg'), role: 'Head of Drive Train' },
-  'Asad Faqirzada': { fullName: 'Asad Faqirzada', photo: getAssetPath('Asad%20Faquirzada.jpg'), role: 'Head of Drive Train' },
-  'Jack DelGrande': { fullName: 'Jack DelGrande', photo: getAssetPath('Jack%20DelGrande.jpg'), role: 'Head of Fabrication' },
+  'Matt': { fullName: 'Matt Mahan', photo: getAssetPath('Matt Mahan.jpg'), role: 'Head of Finance' },
+  'Matt Mahan': { fullName: 'Matt Mahan', photo: getAssetPath('Matt Mahan.jpg'), role: 'Head of Finance' },
+  'Troy': { fullName: 'Troy Sterling', photo: getAssetPath('Troy Sterling.jpg'), role: 'Head of Suspension' },
+  'Troy Sterling': { fullName: 'Troy Sterling', photo: getAssetPath('Troy Sterling.jpg'), role: 'Head of Suspension' },
+  'Tobin': { fullName: 'Tobin Ting', photo: getAssetPath('Tobin Ting.jpg'), role: 'Head of Steering' },
+  'Tobin Ting': { fullName: 'Tobin Ting', photo: getAssetPath('Tobin Ting.jpg'), role: 'Head of Steering' },
+  'Paul': { fullName: 'Paul Gin', photo: getAssetPath('Paulino Gin.jpg'), role: 'Head of Roll Cage' },
+  'Paul Gin': { fullName: 'Paul Gin', photo: getAssetPath('Paulino Gin.jpg'), role: 'Head of Roll Cage' },
+  'Asad': { fullName: 'Asad Faqirzada', photo: getAssetPath('Asad Faquirzada.jpg'), role: 'Head of Drive Train' },
+  'Asad Faqirzada': { fullName: 'Asad Faqirzada', photo: getAssetPath('Asad Faquirzada.jpg'), role: 'Head of Drive Train' },
+  'Jack DelGrande': { fullName: 'Jack DelGrande', photo: getAssetPath('Jack DelGrande.jpg'), role: 'Head of Fabrication' },
 };
 
 export default function NewsPage() {
@@ -162,7 +162,7 @@ export default function NewsPage() {
         <div className="bg-[#0a0a0a]/90 border border-white/10 rounded-full px-4 md:px-8 py-2 flex items-center justify-between md:justify-center gap-4 md:gap-8 shadow-2xl relative min-h-[52px]">
           <div className="w-10 md:hidden" />
           <Link to="/" className="flex items-center shrink-0 absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0">
-            <img src={getAssetPath('logo2.png')} alt="Logo" className="h-6 w-auto" referrerPolicy="no-referrer" />
+            <img src={getAssetPath('logo2.png')} alt="Logo" className="h-6 w-auto" />
           </Link>
           <div className="hidden md:flex items-center gap-8 text-[14px] font-slab tracking-widest text-white/70 uppercase">
             {navLinks.map((link) => (
@@ -276,7 +276,6 @@ export default function NewsPage() {
                                 src={author.photo} 
                                 alt={author.fullName} 
                                 className="w-full h-full object-cover"
-                                referrerPolicy="no-referrer"
                               />
                             ) : (
                               <div className="w-full h-full bg-[#ff1a1a]/10 flex items-center justify-center">
