@@ -12,7 +12,7 @@ import Tasks from './pages/Tasks';
 import NewsPage from './pages/NewsPage';
 import ScrollToTop from './components/ScrollToTop';
 import { useEffect } from 'react';
-import { db, handleFirestoreError, OperationType } from './firebase';
+import { db, handleFirestoreError, OperationType, config } from './firebase';
 import { doc, getDocFromServer } from 'firebase/firestore';
 
 // Set scroll restoration to manual to prevent browser from jumping around
@@ -27,9 +27,15 @@ export default function App() {
       const path = 'test/connection';
       try {
         await getDocFromServer(doc(db, path));
+        console.log("Firestore connection test successful.");
       } catch (error) {
         if (error instanceof Error && error.message.includes('the client is offline')) {
-          console.error("Please check your Firebase configuration.");
+          console.error("Firebase connection failed: the client is offline. Please check your internet connection and Firebase configuration.");
+          console.error("Current config:", {
+            projectId: config.projectId,
+            databaseId: config.firestoreDatabaseId,
+            authDomain: config.authDomain
+          });
         } else {
           // For other errors (like permission denied), use the standard handler
           handleFirestoreError(error, OperationType.GET, path);

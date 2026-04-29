@@ -3,25 +3,30 @@ import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 import firebaseConfig from '../firebase-applet-config.json';
 
+function isValid(val: string | undefined): boolean {
+  return typeof val === 'string' && val !== "" && val !== "undefined" && val !== "null" && !val.includes("YOUR_") && !val.includes("MY_");
+}
+
 // Environment variables take precedence over the config file for public repositories
-const config = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || firebaseConfig.apiKey,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || firebaseConfig.authDomain,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || firebaseConfig.projectId,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || firebaseConfig.storageBucket,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || firebaseConfig.messagingSenderId,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || firebaseConfig.appId,
-  firestoreDatabaseId: import.meta.env.VITE_FIREBASE_FIRESTORE_DATABASE_ID || firebaseConfig.firestoreDatabaseId,
-  measurementId: import.meta.env.VITE_FIREBASE_MEASUREMENT_ID || firebaseConfig.measurementId,
+export const config = {
+  apiKey: isValid(import.meta.env.VITE_FIREBASE_API_KEY) ? import.meta.env.VITE_FIREBASE_API_KEY : firebaseConfig.apiKey,
+  authDomain: isValid(import.meta.env.VITE_FIREBASE_AUTH_DOMAIN) ? import.meta.env.VITE_FIREBASE_AUTH_DOMAIN : firebaseConfig.authDomain,
+  projectId: isValid(import.meta.env.VITE_FIREBASE_PROJECT_ID) ? import.meta.env.VITE_FIREBASE_PROJECT_ID : firebaseConfig.projectId,
+  storageBucket: isValid(import.meta.env.VITE_FIREBASE_STORAGE_BUCKET) ? import.meta.env.VITE_FIREBASE_STORAGE_BUCKET : firebaseConfig.storageBucket,
+  messagingSenderId: isValid(import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID) ? import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID : firebaseConfig.messagingSenderId,
+  appId: isValid(import.meta.env.VITE_FIREBASE_APP_ID) ? import.meta.env.VITE_FIREBASE_APP_ID : firebaseConfig.appId,
+  firestoreDatabaseId: isValid(import.meta.env.VITE_FIREBASE_FIRESTORE_DATABASE_ID) ? import.meta.env.VITE_FIREBASE_FIRESTORE_DATABASE_ID : firebaseConfig.firestoreDatabaseId,
+  measurementId: isValid(import.meta.env.VITE_FIREBASE_MEASUREMENT_ID) ? import.meta.env.VITE_FIREBASE_MEASUREMENT_ID : firebaseConfig.measurementId,
 };
 
 // Initialize Firebase App
 const app = getApps().length > 0 
   ? getApp() 
-  : initializeApp(config.apiKey && config.apiKey !== "MISSING" ? config : { ...config, apiKey: "MISSING" });
+  : initializeApp(config);
 
 // Initialize Services
-export const db = getFirestore(app, config.firestoreDatabaseId);
+// Use default database if firestoreDatabaseId is not provided or invalid
+export const db = getFirestore(app, config.firestoreDatabaseId || '(default)');
 export const auth = getAuth(app);
 
 export enum OperationType {

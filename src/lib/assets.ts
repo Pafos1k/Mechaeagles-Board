@@ -1,15 +1,14 @@
 export const getAssetPath = (path: string) => {
-  // Use import.meta.env.BASE_URL to handle base paths correctly in different environments
-  let baseUrl = import.meta.env.BASE_URL || '/';
+  if (!path) return '';
+  if (path.startsWith('http')) return path;
   
-  // If baseUrl is './', it can cause issues with client-side routing on platforms like Vercel.
-  // We prefer using an absolute path from the root.
-  if (baseUrl === './') {
-    baseUrl = '/';
-  }
+  // Use import.meta.env.BASE_URL but ensure it's absolute
+  let baseUrl = import.meta.env.BASE_URL || '/';
+  if (baseUrl === './') baseUrl = '/';
   
   const cleanBaseUrl = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`;
-  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+  const cleanPath = path.replace(/^(\.\/|\.\.\/|\/)+/, '');
   
-  return `${cleanBaseUrl}${cleanPath}`;
+  // Encode the path to handle spaces and special characters
+  return encodeURI(`${cleanBaseUrl}${cleanPath}`);
 };
